@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+        <import type="android.text.Html"/>
+
+
+        <variable
+            name="event"
+            type="com.sambhav.tws.ui.home.exam.model.QuestionData" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp">
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1111"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorTextBlack"></TextView>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/ll_question_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    android:id="@+id/tv_question_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorTextBlack"></com.sambhav.tws.utils.customView.CustomTextView>
+                <!--android:text="@{Html.fromHtml(String.format(@string/DateCreate,event.question_title))}"-->
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    android:id="@+id/tv_question_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="@{Html.fromHtml(event.question_title)}"
+
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorTextBlack"></com.sambhav.tws.utils.customView.CustomTextView>
+
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:adjustViewBounds="true"
+                android:visibility="@{TextUtils.isEmpty(event.question_img) ? View.GONE : View.VISIBLE}"
+                setImage='@{event.question_img}'
+                android:id="@+id/iv_question_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ImageView>
+        </LinearLayout>
+        <!--android:visibility="@{TextUtils.isEmpty(event.question_img) ? View.GONE : View.VISIBLE}"
+        setImage='@{event.question_img}'-->
+
+
+        <LinearLayout
+
+            android:id="@+id/ll_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_question_title">
+            <!--android:visibility="@{event..test_type.equals(`practice`) ? View.GONE : View.VISIBLE}"-->
+            <RadioGroup
+                android:visibility="@{event.question_type.equalsIgnoreCase(`mcq`)  ? View.VISIBLE : View.GONE}"
+                android:id="@+id/rg_exam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/sound">
+                <!--android:text='@{item.title != null ? user.title : ""}'-->
+                <!--android:background="@drawable/bg_radio_blue_back"
+                android:background="@drawable/bg_radio_green_back"-->
+                <RadioButton
+
+                    android:id="@+id/rb_option1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{rbOption1.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_1_text}" />
+
+                <RadioButton
+
+                    android:id="@+id/rb_option2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@{rbOption2.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_2_text}" />
+
+                <RadioButton
+
+                    android:visibility="@{TextUtils.isEmpty(event.option_3_text) ? View.GONE : View.VISIBLE}"
+                    android:id="@+id/rb_option3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@{rbOption3.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_3_text}"  />
+
+                <RadioButton
+
+                    android:visibility="@{TextUtils.isEmpty(event.option_4_text) ? View.GONE : View.VISIBLE}"
+                    android:id="@+id/rb_option4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@{rbOption4.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_4_text}"  />
+
+                <RadioButton
+
+                    android:visibility="@{TextUtils.isEmpty(event.option_5_text) ? View.GONE : View.VISIBLE}"
+                    android:id="@+id/rb_option5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@{rbOption5.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_5_text}"  />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:visibility="@{event.question_type.equalsIgnoreCase(`msq`)  ? View.VISIBLE : View.GONE}"
+                android:id="@+id/ll_exam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <CheckBox
+
+                    android:id="@+id/cb_option1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{cbOption1.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_1_text}"/>
+
+                <CheckBox
+                    android:id="@+id/cb_option2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@{cbOption2.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_2_text}"/>
+
+                <CheckBox
+                    android:visibility="@{TextUtils.isEmpty(event.option_3_text) ? View.GONE : View.VISIBLE}"
+                    android:id="@+id/cb_option3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@{cbOption3.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:text="@{event.option_3_text}" />
+
+                <CheckBox
+                    android:visibility="@{TextUtils.isEmpty(event.option_4_text) ? View.GONE : View.VISIBLE}"
+                    android:background="@{cbOption4.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:id="@+id/cb_option4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@{event.option_4_text}" />
+
+                <CheckBox
+                    android:background="@{cbOption5.checked ? @drawable/bg_radio_blue_back : @drawable/bg_radio_back}"
+                    android:id="@+id/cb_option5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:visibility="@{TextUtils.isEmpty(event.option_5_text) ? View.GONE : View.VISIBLE}"
+                    android:text="@{event.option_5_text}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@{event.question_type.equalsIgnoreCase(`nt`)  ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.sambhav.tws.utils.customView.CustomEditTextView
+                    android:id="@+id/et_option"
+                    style="@style/ValueEditTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="your answer"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_options">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_gray_border"
+                android:padding="@dimen/_3sdp"
+                android:text="Solution"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#fff">
+
+            </TextView>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

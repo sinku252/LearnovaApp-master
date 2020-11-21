@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.chapter.activity.ChapterActivity">
+
+        <include layout="@layout/layout_back"/>
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/back_button_height"
+            android:layout_height="@dimen/back_button_height"
+            android:src="@drawable/ic_arrow"
+            android:tint="@color/colorPrimary"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:padding="@dimen/back_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_round_white"/>
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="18dp"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/layout_back_card"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <com.sambhav.tws.utils.customView.CustomButton
+                        android:id="@+id/btnAdd"
+                        style="@style/ButtonView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="14dp"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:drawableStart="@drawable/ic_add"
+                        android:drawablePadding="8dp"
+                        android:text="@string/add_notes"
+                        android:visibility="gone"
+                        android:textSize="12sp"
+                        app:font_name="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_event" />
+
+                     </LinearLayout>
+
+                </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <include
+            layout="@layout/dialog_progress"
+            app:viewModel="@{viewModel}"/>
+
+        <include
+            layout="@layout/layout_no_item"
+            app:viewModel="@{viewModel}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

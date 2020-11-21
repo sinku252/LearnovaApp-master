@@ -1,0 +1,69 @@
+<resources>
+    <!--<string name="app_name">Learnoma Live</string>-->
+    <string name="app_name">Sambhav</string>
+    <!--<string name="app_site_link">https://www.learnoma.in</string>-->
+    <string name="app_site_link">https://www.grsambhav.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_des">des</string>
+
+    <!--Login Screen-->
+    <string name="login_title_text">Kota Factory</string>
+    <string name="login_title_text_des">please share your institute details to get\nthem on board</string>
+    <string name="institute_name">Institute Name</string>
+    <string name="location">Location</string>
+    <string name="hint_kota_rajasthan">Kota Rajasthan</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="hint_xxx_xx_xxxx">XXX XX XXXX</string>
+    <string name="submit">SUBMIT</string>
+
+    <!--Student Screen-->
+    <string name="student_title_text">Sambhav</string>
+    <string name="teacher_title_text">Sambhav</string>
+    <string name="student_title_text_des">Please share your institute details to get\nthem on board</string>
+    <string name="student_id">Student ID</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
+    <string name="enrollment">Enrollment</string>
+    <string name="medium">Medium</string>
+
+    <!--CompleteProfile Screen-->
+    <string name="complete_title_text">Hi, Complete your profile\nto start</string>
+    <string name="sign_up_title_text">To Achieve Your Success Story Sign\nUp Here</string>
+    <string name="name">Name</string>
+    <string name="name_first">First Name</string>
+    <string name="name_last">Last Name</string>
+    <string name="gender">Gender</string>
+    <string name="mobile_no">Mobile No.</string>
+    <string name="email">Email</string>
+    <string name="add_video">Add Video</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="publish_to_library">Publish To Library</string>
+    <string name="dont_publish">Don\'t Publish</string>
+
+    <!--EditSchedule Screen-->
+    <string name="edit_schedule_title">Edit Schedule</string>
+    <string name="select_subject">Select Subject</string>
+    <string name="occurance">Occurance</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="create_schedule">Create Schedule</string>
+    <string name="publish">Publish</string>
+    <string name="upload_notes_from_library_less_than">Upload Notes From Library (Less than MAX_SIZE)</string>
+    <string name="upload_video_from_library_less_than">Upload Video From Library (Less than MAX_SIZE)</string>
+    <string name="track_selection_title">Quality</string>
+    <string name="generic_text">%s / %s</string>
+    <string name="ttttt">150</string>
+
+    <string name="question_count">Total Questions: %s</string>
+
+    <string name="solution">Solution :- %s</string>
+
+    <string name="grade_price">Price :- %s</string>
+    <string name="grade_title">Course :- %s</string>
+
+
+    <string name="zoom_sdk_key">Jy74EE00vcMQe87lBblALVnj4SPjCAswI5xt</string>
+    <string name="zoom_sdk_secret">Xqs0RWaM9bpxeQKKlp6tD16EafHeoN1N5miO</string>
+
+
+</resources>

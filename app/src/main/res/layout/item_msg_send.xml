@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="80dp"
+            android:layout_marginStart="60dp"
+            android:textSize="@dimen/_10sdp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_msg_send"
+            android:textColor="@color/colorTextWhite"
+            android:text="This"/>
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            app:font_name="light"
+            android:textSize="@dimen/_8sdp"
+            android:layout_alignStart="@+id/tvMsg"
+            android:layout_below="@+id/tvMsg"
+            android:text="12:10 PM"/>
+    </RelativeLayout>
+</layout>

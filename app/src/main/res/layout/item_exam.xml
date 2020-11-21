@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="event"
+            type="com.sambhav.tws.ui.home.exam.model.ExamData" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/exam_item_border">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp">
+
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:id="@+id/tvSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="s lkkas safkl asfklk asfkla sfklasf sklafkl"
+                android:textColor="#247EEB" />
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <!--android:visibility="@{event.test_type.equals(`practice`) ? View.GONE : View.VISIBLE}"-->
+                <LinearLayout
+                    android:visibility="@{event.test_type.equals(`live`) ?  View.VISIBLE : View.GONE }"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.sambhav.tws.utils.customView.CustomTextView
+                        android:textSize="@dimen/_12sdp"
+                        android:textAllCaps="true"
+                        android:id="@+id/test_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JUNE 12, 2020 | 09:00 AM"
+                        android:textColor="#002D6A" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.sambhav.tws.utils.customView.CustomTextView
+                        android:textSize="@dimen/_12sdp"
+                        android:id="@+id/test_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 03 HR 00 MIN"
+                        android:textColor="#FF1F00" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_yellow_border"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingRight="@dimen/_20sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:textAllCaps="true"
+                    android:text="@{event.test_type}"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--<androidx.cardview.widget.CardView
+        android:layout_marginTop="@dimen/_5sdp"
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+        &lt;!&ndash;android:text="@{event.title}"&ndash;&gt;
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@{event.title}"
+            android:layout_gravity="center"
+            android:textColor="#247EEB"
+            android:textSize="14sp"
+            app:font_name="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivSubIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.cardview.widget.CardView>-->
+</layout>

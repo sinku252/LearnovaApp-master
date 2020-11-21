@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="week"
+            type="com.sambhav.tws.ui.schedule.model.WeekModel" />
+    </data>
+    <androidx.appcompat.widget.AppCompatCheckBox
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:textAllCaps="true"
+        android:text="@{week.name}"
+        android:checked="@={week.select}"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="12sp">
+
+    </androidx.appcompat.widget.AppCompatCheckBox>
+</layout>

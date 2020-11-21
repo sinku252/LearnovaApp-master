@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <FrameLayout
+       android:id="@+id/rootLayout"
+       android:layout_width="match_parent"
+       android:layout_height="35dp">
+       <com.sambhav.tws.utils.customView.CustomTextView
+           android:id="@+id/tvHeader"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:textColor="@color/colorTextBlack"
+           android:text="Today's Event"
+           app:font_name="bold"
+           android:layout_gravity="center"/>
+
+   </FrameLayout>
+</layout>

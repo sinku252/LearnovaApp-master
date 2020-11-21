@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+        <!--<import type="String"/>-->
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+
+        <variable
+            name="examData"
+            type="com.sambhav.tws.ui.home.exam.model.ExamData" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include
+        layout="@layout/layout_back" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/takeExamback"
+        android:layout_width="@dimen/back_button_height"
+        android:layout_height="@dimen/back_button_height"
+        android:src="@drawable/ic_arrow"
+        android:tint="@color/colorPrimary"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:padding="@dimen/back_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_round_white"/>
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/takeExamback">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_weight="1"
+
+            android:gravity="center_vertical"
+            android:background="#3964CE"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize">
+
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:id="@+id/tv_test_title"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxWidth="@dimen/_180sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textColor="#fff"
+                android:text="@{examData.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.sambhav.tws.utils.customView.CustomTextView>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_subject_choose"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_header"
+        android:background="#DCE7FB"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize">
+
+        <!--<LinearLayout
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:layout_weight=".28"
+                android:background="@drawable/spinner_bc"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            </RelativeLayout>
+        </LinearLayout>-->
+        <LinearLayout
+            android:visibility="@{examData.test_type.equals(`practice`) ? View.GONE : View.VISIBLE}"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/rounded_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:textColor="@color/colorTextBlack"
+                android:text="Time Left:00:00:00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.sambhav.tws.utils.customView.CustomTextView>
+
+
+        </LinearLayout>
+
+       <!-- <LinearLayout
+            android:id="@+id/ll_submit_test"
+            android:padding="@dimen/back_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:duplicateParentState="true"
+                android:clickable="false"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:padding="@dimen/_3sdp"
+                android:textColor="#fff"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="Submit"
+                android:background="@drawable/button_gray_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>-->
+        <LinearLayout
+            android:id="@+id/ll_submit_test"
+            android:gravity="right"
+            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:paddingRight="@dimen/_15sdp"
+               android:paddingLeft="@dimen/_15sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:textColor="#fff"
+                android:textAllCaps="true"
+
+                android:text="Submit Test"
+                android:background="@drawable/button_no_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </com.sambhav.tws.utils.customView.CustomTextView>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:orientation="vertical"
+        android:id="@+id/total_questions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_subject_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:textColor="@color/colorTextBlack"
+            android:text= "@{@string/question_count(examData.test_question_count)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></com.sambhav.tws.utils.customView.CustomTextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_take_exam"
+        app:layout_constraintTop_toBottomOf="@+id/total_questions"
+        app:layout_constraintBottom_toTopOf="@+id/ll_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+  <!--  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_subject_choose">
+
+    </LinearLayout>-->
+    <!--<androidx.recyclerview.widget.RecyclerView
+
+        app:layout_constraintTop_toBottomOf="@+id/ll_subject_choose"
+        android:id="@+id/frame_container"
+        tools:listitem="@layout/item_question"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ll_navigation"/>-->
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_take_exam"
+        app:layout_constraintTop_toBottomOf="@+id/ll_subject_choose"
+        app:layout_constraintBottom_toTopOf="@+id/ll_navigation"
+        android:layout_width="match_parent"
+        android:clipToPadding="true"
+        android:nestedScrollingEnabled="false"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_event" />-->
+
+   <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:labelVisibilityMode="unlabeled"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/color_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/exam_menu"/>-->
+
+
+
+    <LinearLayout
+        android:background="@drawable/white_selectable_button"
+        android:id="@+id/ll_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_previous_qu"
+            android:background="@drawable/white_selectable_button"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:clickable="false"
+                android:src="@drawable/ic_left_arrow"
+                android:background="@null"
+                android:duplicateParentState="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ImageButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ans_later"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:padding="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:textColor="@color/colorTextBlack"
+                android:id="@+id/tv_answer_later"
+                android:textStyle="bold"
+                android:duplicateParentState="true"
+                android:focusable="false"
+                android:clickable="false"
+                android:text="Answer Later"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.sambhav.tws.utils.customView.CustomTextView>
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/ll_clear_response"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:padding="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:id="@+id/tv_clear_response"
+                android:textColor="@color/colorTextBlack"
+                android:textStyle="bold"
+                android:focusable="false"
+                android:clickable="false"
+                android:text="Clear Response"
+                android:duplicateParentState="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.sambhav.tws.utils.customView.CustomTextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_next_qu"
+            android:background="@drawable/white_selectable_button"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <ImageButton
+                android:clickable="false"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_right_arrow"
+                android:background="@null"
+                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ImageButton>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/dialog_progress"
+        app:viewModel="@{viewModel}"/>
+
+   <!-- <Button
+        android:id="@+id/btn_product_add_product"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/colorPrimary"
+        android:text="Test button"
+        android:textColor="@color/textColorPrimary" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

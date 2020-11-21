@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_home"
+        android:title="Home"
+        android:icon="@drawable/menu_home_back"/>
+
+    <item
+        android:id="@+id/menu_live"
+        android:title="Live Class"
+        android:icon="@drawable/menu_class_back"/>
+
+    <item
+        android:id="@+id/menu_video"
+        android:title="Videos"
+        android:icon="@drawable/menu_video_back"/>
+
+    <item
+        android:id="@+id/menu_notes"
+        android:title="Notes"
+        android:icon="@drawable/menu_notes_back"/>
+    <item
+        android:id="@+id/menu_doubt"
+        android:title="Doubt"
+        android:icon="@drawable/menu_doubt_back"/>
+
+
+</menu>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.sambhav.tws.ui.home.WebViewActivity">
+
+        <include layout="@layout/layout_back"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/back_button_height"
+            android:layout_height="@dimen/back_button_height"
+            android:src="@drawable/ic_arrow"
+            android:tint="@color/colorPrimary"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:padding="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_round_white"/>
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            app:font_name="bold"
+            android:textColor="@color/color_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="130dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/img_des"
+            android:layout_marginTop="130dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <include
+            layout="@layout/dialog_progress"
+            app:viewModel="@{viewModel}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

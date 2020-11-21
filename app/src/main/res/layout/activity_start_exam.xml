@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="examData"
+            type="com.sambhav.tws.ui.home.exam.model.ExamData" />
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.sambhav.tws.ui.home.exam.activity.StartExamActivity">
+
+        <include layout="@layout/layout_back" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/back_button_height"
+            android:layout_height="@dimen/back_button_height"
+            android:src="@drawable/ic_arrow"
+            android:tint="@color/colorPrimary"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:padding="@dimen/back_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_round_white"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="4dp">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:id="@+id/tv_exam_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:text="@{examData.title}"
+                            android:textColor="#247EEB" />
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/tv_exam_report"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{examData.short_description}"
+                            android:textColor="#000" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/ll_start_test"
+                            android:padding="@dimen/_10sdp"
+                            android:gravity="center_horizontal"
+                            android:background="@drawable/button_blue_border"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.sambhav.tws.utils.customView.CustomTextView
+                                android:textColor="@color/color_white"
+                                android:textAllCaps="true"
+                                android:text="Start Test"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="event"
+            type="com.sambhav.tws.ui.chapter.model.ChapterData" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@{event.chapter_title}"
+            android:layout_gravity="center"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="14sp"
+            app:font_name="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivSubIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

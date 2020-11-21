@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sambhav.tws.ui.login.LoginActivity">
+
+    <include layout="@layout/layout_login_back" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/layout_back_card" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingBottom="30dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_login_header" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    android:id="@+id/tvStudentTitle"
+                    style="@style/KeyTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/student_id"
+                    app:font_name="medium" />
+
+                <com.sambhav.tws.utils.customView.CustomEditTextView
+                    android:id="@+id/etv_student_id"
+                    style="@style/ValueEditTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="DAVXXXXXXX"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    style="@style/KeyTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/password"
+                    app:font_name="medium" />
+
+                <com.sambhav.tws.utils.customView.CustomEditTextView
+                    android:id="@+id/etv_password"
+                    style="@style/ValueEditTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:inputType="textPassword"
+                    android:hint="*********"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_enrollment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp">
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    style="@style/KeyTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/enrollment"
+                    app:font_name="medium" />
+
+                <com.sambhav.tws.utils.customView.CustomEditTextView
+                    style="@style/ValueEditTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Enrollment"
+                    android:inputType="number"
+                    android:maxLength="10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp">
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    style="@style/KeyTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/medium"
+                    app:font_name="medium" />
+
+                <com.sambhav.tws.utils.customView.CustomEditTextView
+                    style="@style/ValueEditTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="CBSE"
+                    android:maxLength="10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <com.sambhav.tws.utils.customView.CustomButton
+                    android:id="@+id/btn_submit"
+                    style="@style/ButtonView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/submit"
+                    android:onClick="studentLogin"
+                    app:font_name="bold" />
+
+            </LinearLayout>
+
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:id="@+id/btnSignup"
+                style="@style/KeyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:text="Sign Up"
+                android:visibility="gone"
+                app:font_name="medium" />
+
+        </LinearLayout>
+
+
+        <include layout="@layout/layout_no_item"
+            bind:viewModel="@{viewModel}"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <include layout="@layout/dialog_progress"
+        bind:viewModel="@{viewModel}"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.sambhav.tws.ui.home.doubt.model.DoubtRoomModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin8dp">
+
+        <ImageView
+            android:id="@+id/ivUserIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_user"
+            setUserImageRound="@{model.profile_image}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDoubt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvName"
+            tools:layout_constraintDimensionRatio="@dimen/margin18dp" />
+
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/colorTextBlack"
+            android:text="@{model.name}"
+            app:font_name="bold"
+            android:layout_marginStart="8sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivUserIcon"
+            app:layout_constraintBottom_toTopOf="@+id/tvTime"/>
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8sp"
+            android:textColor="@color/colorTextNormal"
+            android:text="9/5/2020"
+            android:visibility="gone"
+            android:layout_marginStart="8sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            app:layout_constraintStart_toEndOf="@+id/ivUserIcon"
+            app:layout_constraintBottom_toTopOf="@+id/tvDoubt"/>
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvDoubt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/colorPrimary"
+            android:text='@{model.total_doubts +" Doubts"}'
+            android:layout_marginStart="8sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+            app:layout_constraintStart_toEndOf="@+id/ivUserIcon"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

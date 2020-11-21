@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sambhav.tws">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.webkit.PermissionRequest" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.home.exam.activity.StartExamActivity"></activity>
+        <activity android:name=".ui.welcome.activity.WelcomeActivity" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.home.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.profile.activities.TeacherProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.notes.activities.AddNotesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.videos.activities.AddVideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.notes.activities.TeacherNotesListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.notes.activities.StudentNotesListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.videos.activities.StudentVideoListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.videos.activities.TeacherVideosListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.classes.activities.StudentLiveClassActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.classes.activities.TeacherLiveClassActivity"
+            android:configChanges="keyboard|uiMode|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.videos.activities.LiveVideoActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.profile.activities.StudentProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".ui.chapter.activity.ChapterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.exam.activity.ExamListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.exam.activity.TakeExamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.schedule.activities.ViewScheduleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.schedule.activities.ScheduleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.profile.activities.CompleteProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.doubt.AllDoubtActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.payemnt.PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.signUp.activity.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.home.exam.activity.ExamResultActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.home.exam.activity.SolutionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.payemnt.BasePaymentActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_CsfQfz1leFnKja" />
+        <!--<meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_20DuESnCcnDDmW" />-->
+
+        <service
+            android:name=".utils.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".ui.home.notes.service.NotesDownloadService" />
+    </application>
+
+</manifest>

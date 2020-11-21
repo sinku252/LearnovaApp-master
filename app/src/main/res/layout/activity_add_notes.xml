@@ -1,0 +1,299 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.sambhav.tws.ui.home.notes.activities.AddNotesActivity">
+
+        <include
+            layout="@layout/layout_back" />
+        <include
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="95dp"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            layout="@layout/layout_toolbar"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/back_button_height"
+            android:layout_height="@dimen/back_button_height"
+            android:src="@drawable/ic_arrow"
+            android:tint="@color/colorPrimary"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:padding="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_round_white"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="18dp"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="4dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/layout_back_card" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="Add Resource"
+                            android:textColor="@color/colorTextBlack"
+                            android:textSize="16sp"
+                            app:font_name="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/checkboxSelectChapter"
+                                style="@style/RadioTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="Upload in Existing Chapter"
+                                android:textColor="@color/colorTextBlack"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <RadioButton
+                                android:id="@+id/checkboxNewChapter"
+                                style="@style/RadioTheme"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:text="Create New Chapter"
+                                android:checked="true"
+                                android:textColor="@color/colorTextBlack"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:orientation="horizontal">
+
+                            <com.sambhav.tws.utils.customView.CustomTextView
+                                style="@style/KeyTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.2"
+                                android:text="Chapter Name"
+                                app:font_name="medium" />
+
+                            <com.sambhav.tws.utils.customView.CustomEditTextView
+                                android:id="@+id/et_chaptername"
+                                style="@style/ValueEditTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:visibility="visible"
+                                android:background="@color/colorLightBlue" />
+
+                            <include
+                                android:id="@+id/chapter_spinner"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_32sdp"
+                                android:layout_weight="2"
+                                android:visibility="gone"
+                                layout="@layout/layout_spinner"/>
+
+                        </LinearLayout>
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/checkboxUpload"
+                                style="@style/RadioTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="@string/upload_notes_from_library_less_than"
+                                android:textColor="@color/colorTextBlack"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <RadioButton
+                                android:id="@+id/checkboxUrl"
+                                style="@style/RadioTheme"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:text="Paste URL"
+                                android:checked="true"
+                                android:textColor="@color/colorTextBlack"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </RadioGroup>
+
+                        <com.sambhav.tws.utils.customView.CustomEditTextView
+                            android:id="@+id/et_url"
+                            style="@style/ValueEditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:background="@color/colorLightBlue" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <com.sambhav.tws.utils.customView.CustomTextView
+                                style="@style/KeyTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.2"
+                                android:text="Resource Name"
+                                app:font_name="medium" />
+
+                            <com.sambhav.tws.utils.customView.CustomEditTextView
+                                android:id="@+id/et_name"
+                                style="@style/ValueEditTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@color/colorLightBlue" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/lay_upload"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <com.sambhav.tws.utils.customView.CustomTextView
+                                style="@style/KeyTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:gravity="center_vertical"
+                                android:text="Resource Video"
+                                app:font_name="medium" />
+
+                            <ImageView
+                                android:id="@+id/picker_document"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.2"
+                                android:contentDescription="@string/img_des"
+                                android:src="@drawable/upload" />
+
+                            <com.sambhav.tws.utils.customView.CustomTextView
+                                android:id="@+id/tv_upload_progress"
+                                style="@style/KeyTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical"
+                                android:text="Upload"
+                                app:font_name="medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:padding="@dimen/_10sdp">
+
+                            <com.sambhav.tws.utils.customView.CustomButton
+                                android:id="@+id/btn_cancel"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_button_white"
+                                android:gravity="center"
+                                android:text="Cancel"
+                                android:textAllCaps="false"
+                                android:textColor="@android:color/black"
+                                app:font_name="medium" />
+
+                            <com.sambhav.tws.utils.customView.CustomButton
+                                android:id="@+id/btn_publish"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_button_blue"
+                                android:gravity="center"
+                                android:text="Publish"
+                                android:textAllCaps="false"
+                                android:textColor="@android:color/white"
+                                app:font_name="medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+            <include
+                layout="@layout/layout_no_item"
+                bind:viewModel="@{viewModel}" />
+        </androidx.cardview.widget.CardView>
+
+        </ScrollView>
+        <include
+            layout="@layout/dialog_progress"
+            bind:viewModel="@{viewModel}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

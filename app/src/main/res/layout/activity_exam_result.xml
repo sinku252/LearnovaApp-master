@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="resultData"
+            type="com.sambhav.tws.ui.home.exam.model.TestResultModel" />
+
+        <variable
+            name="examData"
+            type="com.sambhav.tws.ui.home.exam.model.ExamData" />
+
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.exam.activity.ExamListActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_back" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.sambhav.tws.utils.customView.CustomTextView
+                        android:id="@+id/tv_exam_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:text="@{examData.title}"
+                        android:textColor="#247EEB" />
+
+                    <com.sambhav.tws.utils.customView.CustomTextView
+
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:id="@+id/tv_exam_report"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View Report"
+                        android:textColor="#000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ProgressBar
+                            android:id="@+id/performance_progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/result_progress" />
+                        <com.sambhav.tws.utils.customView.CustomTextView
+
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_28sdp"
+                            android:id="@+id/tv_marks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text= "@{@string/generic_text(resultData.total_marks_gain, resultData.total_marks)}"
+                            android:textColor="#000" />
+
+                    </RelativeLayout>
+
+
+
+
+                </LinearLayout>
+
+                <!--square -->
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RelativeLayout
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/button_blue_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:textStyle="bold"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_40sdp"
+                            android:id="@+id/tv_exam_attempt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{resultData.total_attempt}"
+                            android:textColor="#fff" />
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:layout_below="@id/tv_exam_attempt"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Attempt"
+                            android:textColor="#fff" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:background="@drawable/button_blue_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:textStyle="bold"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_40sdp"
+                            android:id="@+id/tv_exam_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{resultData.total_correct}"
+                            android:textColor="#fff" />
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:layout_below="@id/tv_exam_right"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Right"
+                            android:textColor="#fff" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RelativeLayout
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/button_blue_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:textStyle="bold"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_40sdp"
+                            android:id="@+id/tv_exam_wrong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{resultData.total_incorrect}"
+                            android:textColor="#fff" />
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:layout_below="@id/tv_exam_wrong"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wrong"
+                            android:textColor="#fff" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:background="@drawable/button_blue_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:textStyle="bold"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_40sdp"
+                            android:id="@+id/tv_exam_marks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{resultData.total_marks_gain}"
+                            android:textColor="#fff" />
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:layout_below="@id/tv_exam_marks"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Marks Gain"
+                            android:textColor="#fff" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/ll_back"
+                        android:padding="@dimen/_10sdp"
+                        android:gravity="center_horizontal"
+                        android:background="@drawable/button_blue_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.sambhav.tws.utils.customView.CustomTextView
+                            android:textColor="@color/color_white"
+                            android:textAllCaps="true"
+                            android:text="Go to test list"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <include
+                layout="@layout/dialog_progress"
+                app:viewModel="@{viewModel}" />
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

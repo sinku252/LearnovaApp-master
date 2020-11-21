@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "276992949401",
+    "firebase_url": "https://sambhav-test-1.firebaseio.com",
+    "project_id": "sambhav-test-1",
+    "storage_bucket": "sambhav-test-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276992949401:android:818ca9a72927d1d531cc08",
+        "android_client_info": {
+          "package_name": "com.sambhav.tws"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276992949401-dh4l3i062fr7da1rkc2ib79eklnt7ink.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1WEX10tA5UE7ahSyS7M2FDMM2Ae1f6MQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276992949401-dh4l3i062fr7da1rkc2ib79eklnt7ink.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

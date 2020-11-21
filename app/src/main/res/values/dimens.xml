@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin18dp">18dp</dimen>
+    <dimen name="margin8dp">8dp</dimen>
+    <dimen name="back_button_height">40dp</dimen>
+    <dimen name="back_padding">4dp</dimen>
+
+    <style name="KeyTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ValueEditTextView" parent="@android:style/TextAppearance.Widget.EditText">
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ButtonView" parent="@android:style/TextAppearance.Widget.Button">
+        <item name="android:background">@drawable/bg_button_gradient</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="checkBoxView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+
+</resources>

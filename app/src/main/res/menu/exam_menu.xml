@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_home"
+        android:title="previous"
+        android:icon="@drawable/ic_left_arrow"/>
+
+    <item
+        android:id="@+id/menu_live"
+        android:title="Answer Later"
+        android:icon="@drawable/ic_left_arrow"
+        />
+
+    <item
+        android:id="@+id/menu_video"
+        android:title="Clear Response"
+        />
+
+    <item
+        android:id="@+id/menu_notes"
+        android:title="next"
+        android:icon="@drawable/ic_right_arrow"
+        />
+
+
+</menu>

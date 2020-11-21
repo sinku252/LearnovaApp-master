@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#35000000">
+
+    <ImageView
+        android:id="@+id/ivVolume"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="start|center"
+        android:layout_marginStart="12dp"
+        android:src="@drawable/volume"/>
+
+    <ImageView
+        android:id="@+id/ivFullscreen"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end|center"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/full_screen"/>
+
+    <LinearLayout
+        android:id="@+id/layoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivPrevious"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:layout_marginStart="12dp"
+            android:src="@drawable/previous"/>
+
+        <ImageView
+            android:id="@+id/ivPlay"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/play_hover"
+            android:layout_marginStart="12dp" />
+
+
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/next"
+            android:layout_marginStart="12dp"
+            />
+
+
+    </LinearLayout>
+
+</FrameLayout>

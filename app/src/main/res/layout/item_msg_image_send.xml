@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="180dp"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"
+            android:src="@color/colorLightBlue"
+            android:layout_alignParentEnd="true"
+            />
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10sdp"
+            android:layout_below="@+id/iv_image"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/iv_image"
+            android:background="@drawable/bg_msg_send"
+            android:textColor="@color/colorTextWhite"
+            android:text="This is dummy message"/>
+
+        <com.sambhav.tws.utils.customView.CustomTextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            app:font_name="light"
+            android:textSize="@dimen/_8sdp"
+            android:layout_alignStart="@+id/tvMsg"
+            android:layout_below="@+id/tvMsg"
+            android:text="12:10 PM"/>
+    </RelativeLayout>
+</layout>

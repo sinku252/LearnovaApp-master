@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="6dp"
+        android:visibility="@{TextUtils.isEmpty(viewModel.message)?View.GONE :View.VISIBLE,default=gone}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/noIcon"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:contentDescription="@string/img_des"
+                setIcon="@{viewModel.noIcon}"
+                android:src="@drawable/notes_sel"
+                android:visibility="visible" />
+
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text='@{(TextUtils.isEmpty(viewModel.message) || viewModel.noIcon!=null)?"":viewModel.message }'
+                android:textSize="@dimen/_14sdp"
+                app:font_name="medium"
+                tools:text="No data found" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

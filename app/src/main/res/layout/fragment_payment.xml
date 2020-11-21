@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sambhav.tws.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.sambhav.tws.utils.customView.CustomTextView
+                android:id="@+id/tv_description"
+                style="@style/KeyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Student may opt any two subject of either PM/CP/CM will be accessible to pre-recorded &amp; live Video content &amp; test of only selected subject"
+                app:font_name="medium"
+                android:textColor="@color/colorTextNormal"
+                android:textSize="@dimen/_10sdp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_payment_sub"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="30dp">
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    style="@style/KeyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total - "
+                    app:font_name="medium" />
+
+                <com.sambhav.tws.utils.customView.CustomTextView
+                    android:id="@+id/tv_total"
+                    style="@style/KeyTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="800"
+                    app:font_name="bold"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorPrimary"/>
+
+
+                <com.sambhav.tws.utils.customView.CustomButton
+                    android:id="@+id/mSubmit"
+                    style="@style/ButtonView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Proceed to Payment"
+                    app:font_name="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
