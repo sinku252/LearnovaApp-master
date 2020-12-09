@@ -127,9 +127,9 @@ class MainActivity : BaseActivity() {
 
                 R.id.menu_doubt -> {
                     if (mPreference.isStudent) {
-                        if (getStudentData(mPreference).is_premium == "0" && getStudentData(
+                        if (getStudentData(mPreference).is_premium == "0" /*&& getStudentData(
                                 mPreference
-                            ).school_id == "1"
+                            ).school_id == "1"*/
                         ) {
                             openPaymentActivity()
                         } else {

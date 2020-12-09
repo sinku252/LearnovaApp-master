@@ -134,6 +134,11 @@ class ExamListActivity : BaseActivity()
                        startActivityForResult(Intent(this, BasePaymentActivity::class.java), 1000)
                    }
                 }
+                else
+                {
+                    val examDataString:String=Gson().toJson(mList[position])
+                    startTest(examDataString)
+                }
             }
 
         }

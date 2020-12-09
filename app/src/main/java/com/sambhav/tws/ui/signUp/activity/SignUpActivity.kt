@@ -36,9 +36,9 @@ class SignUpActivity : BaseActivity() {
         mBinding.btnSubmit.setOnClickListener {
             if (checkValidation()){
                 val map = JsonObject()
-                map.addProperty(API_KEY_EMAIL,etv_name.text.toString().trim())
+                map.addProperty(API_KEY_EMAIL,etv_email.text.toString().trim())
                 map.addProperty(API_KEY_MOBILE,etv_mobile.text.toString().trim())
-                map.addProperty(API_KEY_NAME,etv_email.text.toString().trim())
+                map.addProperty(API_KEY_NAME,etv_name.text.toString().trim())
                 map.addProperty(API_KEY_GRADE_ID,
                     (spinner_class.spinner.adapter as StreamListAdapter).mList[spinner_class.spinner.selectedItemPosition].id
                 )

@@ -279,7 +279,7 @@ fun getVideosList(): ArrayList<VideosListModel> {
     return list
 
 }
-fun getMenuList() : ArrayList<MenuModel>{
+fun getMenuList(type:Boolean) : ArrayList<MenuModel>{
     return ArrayList<MenuModel>().apply {
         add(MenuModel(name = Live,
             icon = R.drawable.ic_live_class,
@@ -297,10 +297,13 @@ fun getMenuList() : ArrayList<MenuModel>{
             icon = R.drawable.ic_doubt_room,
             textColor = "#000000",
             bgColor = "#DBE9FF"))
-        add(MenuModel(name = Test_Series,
-            icon = R.drawable.ic_doubt_room,
-            textColor = "#000000",
-            bgColor = "#DBE9FF"))
+        if(type)
+        {
+            add(MenuModel(name = Test_Series,
+                icon = R.drawable.ic_doubt_room,
+                textColor = "#000000",
+                bgColor = "#DBE9FF"))
+        }
     }
 }
 /*fun getNotificationList() : ArrayList<NotificationModel>{

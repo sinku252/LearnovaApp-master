@@ -75,7 +75,7 @@ class HomeFragment : BaseFragment(),HomeListAdapter.Callback {
                 resources.getDimension(R.dimen.margin8dp).toInt(), true
             )
         )
-        val list = getMenuList()
+        val list = getMenuList(mPreference.isStudent)
         recycler_view.adapter = HomeListAdapter(requireContext(), list,this)
 
         spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -95,7 +95,7 @@ class HomeFragment : BaseFragment(),HomeListAdapter.Callback {
 
     }
     override fun onItemClick(position: Int) {
-        val list =getMenuList()
+        val list =getMenuList(mPreference.isStudent)
         Log.d("onItemClick"," "+position+" "+list[position].name)
         when (list[position].name) {
             Live -> {
@@ -134,12 +134,12 @@ class HomeFragment : BaseFragment(),HomeListAdapter.Callback {
                     }
                     else
                     {
-                        parentActivity?.replaceFragment(ClassFragment(), R.id.menu_live)
+                        parentActivity?.replaceFragment(DoubtFragment(), R.id.menu_doubt)
                     }
                 }
                 else
                 {
-                    parentActivity?.replaceFragment(ClassFragment(), R.id.menu_live)
+                    parentActivity?.replaceFragment(DoubtFragment(), R.id.menu_doubt)
                 }
             }
             Test_Series -> {

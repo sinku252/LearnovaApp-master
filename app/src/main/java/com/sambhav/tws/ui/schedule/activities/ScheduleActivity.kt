@@ -160,7 +160,8 @@ class ScheduleActivity : BaseActivity() {
             TimePickerDialog.OnTimeSetListener { p0, p1, p2 ->
                 myCalendar.set(Calendar.HOUR_OF_DAY, p1)
                 myCalendar.set(Calendar.MINUTE, p2)
-                val df = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
+                //val df = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
+                val df = SimpleDateFormat("hh:mm", Locale.getDefault())
                 val sDate = df.format(myCalendar.time)
                 etTime.setText(sDate)
             },

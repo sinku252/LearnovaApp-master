@@ -303,6 +303,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/ll_ans_later"
             android:background="?android:selectableItemBackground"
             android:gravity="center_horizontal|center_vertical"
