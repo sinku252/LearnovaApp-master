@@ -237,7 +237,12 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
               />
 
-
+            <ImageView
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                android:id="@+id/iv_solution_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></ImageView>
 
         </LinearLayout>
 

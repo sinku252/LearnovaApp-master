@@ -61,9 +61,10 @@
     <string name="grade_price">Price :- %s</string>
     <string name="grade_title">Course :- %s</string>
 
-
+    <string name="youtube_developer_key">AIzaSyBsBhoW6yucvBZjBTDazfu5p2EN_c_uwBA</string>
     <string name="zoom_sdk_key">Jy74EE00vcMQe87lBblALVnj4SPjCAswI5xt</string>
     <string name="zoom_sdk_secret">Xqs0RWaM9bpxeQKKlp6tD16EafHeoN1N5miO</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
 
 
 </resources>

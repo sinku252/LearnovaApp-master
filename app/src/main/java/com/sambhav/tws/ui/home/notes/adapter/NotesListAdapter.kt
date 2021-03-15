@@ -21,7 +21,8 @@ class NotesListAdapter(
     private val mContext: Context,
     var mList: ArrayList<NotesSubListModel>,
     val mCallback: BaseCallback
-) : BaseBindingAdapter() {
+) : BaseBindingAdapter()
+{
     var isStudent = true
     var mDeviceRatio = Pair(0, 0)
 

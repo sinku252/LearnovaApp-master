@@ -61,6 +61,7 @@ class AddNotesActivity : BasePermissionActivity() {
         mViewModel.uploadData.observe(this, Observer {
             if(it){
                 Toast.makeText(this,"Document uploaded",Toast.LENGTH_SHORT).show()
+                FileUtils.deleteTempFile(this);
                 finish()
             }else{
                 Toast.makeText(this,"Failed to uploaded Try-Again",Toast.LENGTH_SHORT).show()
@@ -235,6 +236,7 @@ class AddNotesActivity : BasePermissionActivity() {
                         tv_upload_progress.text = "Uploading"
                         val file = File(FileUtils.getPath(this, data.data))
                         mViewModel.uploadFile(file)
+                      //  FileUtils.deleteTempFile(this);
                     }
                 }
             }

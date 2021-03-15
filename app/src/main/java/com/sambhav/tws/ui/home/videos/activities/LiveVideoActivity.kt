@@ -1,5 +1,7 @@
 package com.sambhav.tws.ui.home.videos.activities
 
+import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.net.http.SslError
@@ -11,6 +13,7 @@ import android.webkit.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.geeksmediapicker.GeeksMediaPicker
 import com.geeksmediapicker.GeeksMediaType
 import com.google.gson.JsonObject
@@ -18,6 +21,8 @@ import com.sambhav.tws.R
 import com.sambhav.tws.apiModel.DoubtData
 import com.sambhav.tws.base.BaseYoutubePlayerActivity
 import com.sambhav.tws.databinding.ActivityVideosLiveBinding
+import com.sambhav.tws.ui.home.doubt.adapter.AllDoubtAdapter
+import com.sambhav.tws.ui.home.doubt.viewModel.DoubtViewModel
 import com.sambhav.tws.utils.*
 import kotlinx.android.synthetic.main.activity_videos_live.*
 import kotlinx.android.synthetic.main.layout_chat_card.*
@@ -26,9 +31,6 @@ import java.io.File
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.collections.ArrayList
-import android.webkit.WebChromeClient
-import com.sambhav.tws.ui.home.doubt.adapter.AllDoubtAdapter
-import com.sambhav.tws.ui.home.doubt.viewModel.DoubtViewModel
 
 
 /**
@@ -83,11 +85,14 @@ class LiveVideoActivity : BaseYoutubePlayerActivity() {
         })
 
         val videoType = intent.getStringExtra(EXTRA_KEY_VIDEO_TYPE) ?: ""
-        Log.d("VimeoService","extracting videoType "+videoType)
+        Log.d("VimeoService", "extracting videoType " + videoType)
 
-        if (videoType == VIDEO_TYPE_YT_VDO && mUrl.contains("youtube.com",true) ) {
+       // if (videoType == VIDEO_TYPE_YT_VDO && mUrl.contains("youtube.com",true) ) {
+        if(videoType == VIDEO_TYPE_YT_VDO)
+        {
             layYoutube.visibility = View.VISIBLE
-            initYoutube(getYouTubeId(mUrl))
+            loadYouTubeThumbnail(getYouTubeId(mUrl),this);
+           // initYoutube(getYouTubeId(mUrl))
         } else {
             lay_webView.visibility = View.VISIBLE
             initWebview()
@@ -108,8 +113,8 @@ class LiveVideoActivity : BaseYoutubePlayerActivity() {
                 fullScreenContent: View?,
                 callback: WebChromeClient.CustomViewCallback
             ) {
-                super.onShowCustomView(fullScreenContent,callback)
-                fullScreenContent?.let {fullScreenView ->
+                super.onShowCustomView(fullScreenContent, callback)
+                fullScreenContent?.let { fullScreenView ->
                     videoFrame?.removeAllViews()
                     videoFrame?.visibility = View.VISIBLE
                     videoFrame?.addView(fullScreenView)
@@ -143,13 +148,10 @@ class LiveVideoActivity : BaseYoutubePlayerActivity() {
 
             }
 
-            override fun onReceivedSslError(
-                view: WebView,
-                handler: SslErrorHandler,
-                error: SslError
-            ) {
+            /*override fun onReceivedSslError(view: WebView,handler: SslErrorHandler,error: SslError)
+            {
                 handler.proceed() // Ignore SSL certificate errors
-            }
+            }*/
         }
     }
 
@@ -325,6 +327,25 @@ class LiveVideoActivity : BaseYoutubePlayerActivity() {
         mViewModel.createDoubt(map)
     }
 
+
+    private fun loadYouTubeThumbnail(name:String,mCtx:Context)
+    {
+        val imagePath = "https://img.youtube.com/vi/$name/maxresdefault.jpg"
+
+        Glide.with(mCtx)
+            .load(imagePath) // image url
+            .into(video_thumbnail_image_view)
+    }
+
+    fun onYouTubeClick(v:View)
+    {
+        val intent = Intent(this, YouTubeActivity::class.java)
+        intent.putExtra("videoId",getYouTubeId(mUrl))
+        startActivity(intent)
+        overridePendingTransition(0,0)
+    }
+
+
     override fun onStart() {
         super.onStart()
     }
@@ -339,4 +360,6 @@ class LiveVideoActivity : BaseYoutubePlayerActivity() {
     override fun onPause() {
         super.onPause()
     }
+
+
 }

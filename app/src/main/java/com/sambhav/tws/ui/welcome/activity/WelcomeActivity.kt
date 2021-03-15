@@ -18,6 +18,7 @@ class WelcomeActivity : BaseActivity() {
     private var dots= ArrayList<TextView>()
     private var layouts= ArrayList<Int>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)

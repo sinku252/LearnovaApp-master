@@ -69,12 +69,33 @@
                     android:layout_height="wrap_content">
 
                     <FrameLayout
+                        android:visibility="gone"
                         android:id="@+id/layYoutube"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
+                        android:layout_height="@dimen/_170sdp"
+                        >
 
-                        <include layout="@layout/layout_youtube_player" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:id="@+id/video_thumbnail_image_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop" />
+
+                            <ImageButton
+                                android:onClick="onYouTubeClick"
+                                android:layout_centerVertical="true"
+                                android:id="@+id/iv_yt_logo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="center"
+                                app:srcCompat="@drawable/ic_youtube_logo"
+                                android:background="@null"
+                                />
+                        </RelativeLayout>
+                     <!--   <include layout="@layout/layout_youtube_player" />-->
                     </FrameLayout>
 
                     <FrameLayout

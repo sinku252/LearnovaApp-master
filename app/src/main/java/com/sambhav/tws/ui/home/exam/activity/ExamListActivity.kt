@@ -124,7 +124,8 @@ class ExamListActivity : BaseActivity()
             {
                 if (getStudentData(mPreference).is_premium == "0")
                 {
-                   if(position==0)
+                    startActivityForResult(Intent(this, BasePaymentActivity::class.java), 1000)
+                   /*if(position==0)
                    {
                        val examDataString:String=Gson().toJson(mList[position])
                        startTest(examDataString)
@@ -132,7 +133,7 @@ class ExamListActivity : BaseActivity()
                     else
                    {
                        startActivityForResult(Intent(this, BasePaymentActivity::class.java), 1000)
-                   }
+                   }*/
                 }
                 else
                 {
@@ -146,10 +147,11 @@ class ExamListActivity : BaseActivity()
         overridePendingTransition(0,0)
     }
 
-    override
-    fun onResume() {
-       super.onResume()
 
+    override fun onResume() {
+        super.onResume()
+        getList(mBinding.tabs.selectedTabPosition)
+        //mViewModel.getNotes(mSubjectId, mChapterId)
     }
 
     fun startTest(examDataString:String)

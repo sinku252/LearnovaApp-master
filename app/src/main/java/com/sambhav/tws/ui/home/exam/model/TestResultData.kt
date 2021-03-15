@@ -17,6 +17,9 @@ data class TestResultModel(
     val total_marks_gain:String="0",
     val total_positive_marks:String="",
     val total_negative_marks:String="",
+    val rank_generate_status:String="",
+    val rank:String="",
+    val total_rank:String="",
     var attempQuestionsList: ArrayList<AttempQuestionsData> ?= ArrayList()
 )
 
@@ -36,6 +39,7 @@ data class AttempQuestionsData(
     val  option_5_text:  String="",
     val  created_date:  String="",
     val  question_img:  String="",
-    val  solution:  String=""
+    val  solution:  String="",
+    val  solution_img:  String=""
 
 )

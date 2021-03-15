@@ -44,8 +44,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.Comparator;
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
+
+import static com.sambhav.tws.utils.AppConstantKt.TEMP_FILE;
 
 public class FileUtils {
     public static final String DOCUMENTS_DIR = "documents";
@@ -328,6 +331,25 @@ public class FileUtils {
                 if (id != null && id.startsWith("raw:")) {
                     return id.substring(4);
                 }
+
+                if (id != null && id.startsWith("msf:")) {
+                    final File file = new File(context.getCacheDir(), TEMP_FILE + Objects.requireNonNull(context.getContentResolver().getType(uri)).split("/")[1]);
+                    try (final InputStream inputStream = context.getContentResolver().openInputStream(uri); OutputStream output = new FileOutputStream(file)) {
+                        final byte[] buffer = new byte[4 * 1024]; // or other buffer size
+                        int read;
+
+                        while ((read = inputStream.read(buffer)) != -1) {
+                            output.write(buffer, 0, read);
+                        }
+
+                        output.flush();
+                        return file.getAbsolutePath();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    return null;
+                }
+
 
                 String[] contentUriPrefixesToTry = new String[]{
                         "content://downloads/public_downloads",
@@ -722,6 +744,16 @@ public class FileUtils {
         }
         int index = filename.lastIndexOf('/');
         return filename.substring(index + 1);
+    }
+    public static void deleteTempFile(Context context) {
+        final File[] files = context.getCacheDir().listFiles();
+        if (files != null) {
+            for (final File file : files) {
+                if (file.getName().contains(TEMP_FILE)) {
+                    file.delete();
+                }
+            }
+        }
     }
 }
 

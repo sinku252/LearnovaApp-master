@@ -18,8 +18,8 @@ android {
         applicationId "com.sambhav.tws"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.2"
+        versionCode 10
+        versionName "1.9"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -60,7 +60,7 @@ repositories {
 }
 
 ext {
-    koin_version = "2.1.5"
+    koin_version = "2.2.1"
     retrofit = "2.4.0"
     daggerVersion = "2.24"
     rxAndroidVersion = "2.1.0"
@@ -128,8 +128,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.2.1'
 
     implementation 'com.github.dhimant1990:TimerTextView:v1.0'
+
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     // Event Bus for Local Notification
     implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'com.github.ravindu1024:video-webview:1.0.0'
+    implementation 'net.gotev:uploadservice:4.5.1'
+    implementation 'com.github.WrathChaos:MediaPickerLib:0.2.0'
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
     /*implementation 'com.google.android:flexbox:2.0.1'
     implementation project(path: ':commonlib')
     implementation project(path: ':mobilertc')*/

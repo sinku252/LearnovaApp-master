@@ -157,6 +157,18 @@ class SolutionActivity : BaseActivity()
         }
 
         itemQuestionSolutionBinding.tvSolution.text= "Solution :- "+fromHtml(mList.get(position).solution)
+        if(mList.get(position).solution_img!=null && !mList.get(position).solution_img.isEmpty())
+        {
+            itemQuestionSolutionBinding.ivSolutionImg.visibility=View.VISIBLE
+            setImage(itemQuestionSolutionBinding.ivSolutionImg,mList.get(position).solution_img)
+        }
+        else
+        {
+            itemQuestionSolutionBinding.ivSolutionImg.visibility=View.GONE
+        }
+
+
+        /*android:visibility="@{TextUtils.isEmpty(event.question_img) ? View.INVISIBLE : View.VISIBLE}"*/
 
 
         itemQuestionSolutionBinding.executePendingBindings()

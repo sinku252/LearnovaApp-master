@@ -141,6 +141,21 @@
             </intent-filter>
         </service>
         <service android:name=".ui.home.notes.service.NotesDownloadService" />
+
+
+        <activity
+            android:name=".ui.home.videos.activities.YouTubeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize"
+            android:screenOrientation="landscape" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

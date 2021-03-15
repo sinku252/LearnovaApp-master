@@ -1,5 +1,6 @@
 package com.sambhav.tws.ui.home.notes.activities
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_teacher_notes_list.*
 import kotlinx.android.synthetic.main.layout_back.*
 import kotlinx.android.synthetic.main.layout_spinner.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 
 /**
  * A simple [Fragment] subclass.
@@ -57,10 +59,15 @@ class TeacherNotesListActivity : BasePermissionActivity() {
     }
 
     override fun isPermissionAllowed(flag: Boolean) {
+        super.isPermissionAllowed(flag)
+
+    }
+
+    /*override fun isPermissionAllowed(flag: Boolean) {
         if (flag) {
 
         }
-    }
+    }*/
 
     private fun observerData() {
         mViewModel.allNotes.observe(this, androidx.lifecycle.Observer {
@@ -122,22 +129,36 @@ class TeacherNotesListActivity : BasePermissionActivity() {
 
                 }*/
 
-                val url = mList[position].src_url
-                val browserIntent = if (url.contains(".")) {
-                    val extension = mList[position].format_type
-                    if (extension.equals(FT_PDF, true) || extension.equals(FT_IMG, true)) {
-                        Intent(this, WebViewActivity::class.java)
-                            .putExtra(EXTRA_KEY_URL, url)
-                            .putExtra(EXTRA_KEY_EXTENSION, extension)
-                            .putExtra(EXTRA_KEY_TITLE, mList[position].title)
+                PermissionData(this).showPermissionNeededDialog(
+                    arrayOf(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                ) {
+                    val url = mList[position].src_url
+                    val browserIntent = if (url.contains(".")) {
+                        val extension = mList[position].format_type
+                        if (extension.equals(FT_PDF, true) || extension.equals(FT_IMG, true)) {
+                            Intent(this, WebViewActivity::class.java)
+                                .putExtra(EXTRA_KEY_URL, url)
+                                .putExtra(EXTRA_KEY_EXTENSION, extension)
+                                .putExtra(EXTRA_KEY_TITLE, mList[position].title)
+                                .putExtra(EXTRA_KEY_FILE_PATH, File(BASE_DOC_RECEIVE_PATH + "DOC_" +mList[position].id).absolutePath)
+                                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+                        } else {
+                            Intent(Intent.ACTION_VIEW, Uri.parse(mList[position].src_url))
+                        }
                     } else {
                         Intent(Intent.ACTION_VIEW, Uri.parse(mList[position].src_url))
                     }
-                } else {
-                    Intent(Intent.ACTION_VIEW, Uri.parse(mList[position].src_url))
+                    startActivity(browserIntent)
+                    overridePendingTransition(0, 0)
                 }
-                startActivity(browserIntent)
-                overridePendingTransition(0, 0)
+                ///FileOpen.openFile(this,File(BASE_DOC_RECEIVE_PATH + "DOC_" +mList[position].id))
+
+
+
             }
             ACTION_DELETE -> {
                 this.getAlertDailog("", "Are you sure you want to delete this Notes?", {

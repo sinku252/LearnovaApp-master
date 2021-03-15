@@ -17,9 +17,11 @@ const val Test_Series = "Test Series"
 const val TODAY_EVENT = "Today's Events"
 const val UPCOMIG_EVENT = "Upcoming Events"
 const val PAST_EVENT = "Past Events"
-
+const val OPEN_MEDIA_PICKER = 1
 const val DocumnetRequest = 1001
 const val KOTA_FACTORY_SCHOOL_ID = "12"
+const val TEMP_FILE = "temp."
+
 
 const val EXTRA_KEY_ACTION = "Action"
 const val EXTRA_KEY_IS_START = "isStart"
@@ -35,6 +37,7 @@ const val EXTRA_KEY_EXTENSION = "EXTRA_KEY_EXTENSION"
 const val EXTRA_KEY_TEST_ID = "EXTRA_KEY_TEST_ID"
 const val EXTRA_KEY_EXAM_DATA = "EXTRA_KEY_EXAM_DATA"
 const val EXTRA_KEY_RESULT_DATA = "EXTRA_KEY_RESULT_DATA"
+const val EXTRA_KEY_FILE_PATH = "EXTRA_KEY_FILE_PATH"
 
 const val ACTION_WAIT = "Wait"
 const val ACTION_ADD = "Add"

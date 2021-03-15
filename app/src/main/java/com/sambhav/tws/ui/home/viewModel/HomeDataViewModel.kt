@@ -10,10 +10,7 @@ import com.sambhav.tws.ui.login.model.LogoutModelResponse
 import com.sambhav.tws.utils.*
 import com.sambhav.tws.utils.networkRequest.ApiService
 
-class HomeDataViewModel(
-    private val mNetworkService: ApiService,
-    private val pref: SharedPreferencesHelper
-) : BaseViewModel() {
+class HomeDataViewModel(private val mNetworkService: ApiService,private val pref: SharedPreferencesHelper) : BaseViewModel() {
 
     init {
         if (pref.isStudent)

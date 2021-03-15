@@ -300,7 +300,7 @@ fun getMenuList(type:Boolean) : ArrayList<MenuModel>{
         if(type)
         {
             add(MenuModel(name = Test_Series,
-                icon = R.drawable.ic_doubt_room,
+                icon = R.drawable.ic_test,
                 textColor = "#000000",
                 bgColor = "#DBE9FF"))
         }

@@ -1,5 +1,8 @@
 package com.sambhav.tws.ui.home.videos.activities
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -8,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.coursion.freakycoder.mediapicker.galleries.Gallery
 import com.geeksmediapicker.GeeksMediaPicker
 import com.geeksmediapicker.GeeksMediaType
 import com.google.gson.JsonObject
@@ -30,9 +34,11 @@ import kotlinx.android.synthetic.main.activity_add_video.et_url
 import kotlinx.android.synthetic.main.activity_add_video.lay_upload
 import kotlinx.android.synthetic.main.layout_back.*
 import kotlinx.android.synthetic.main.layout_spinner.*
+import net.gotev.uploadservice.protocols.multipart.MultipartUploadRequest
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
+import java.io.FileNotFoundException
 import java.util.regex.Pattern
 
 
@@ -121,6 +127,12 @@ class AddVideoActivity : BaseActivity(){
                 toast("Fill video name")
                 return@CustomClickListener
             }
+
+          /*  val intent = Intent(this, Gallery::class.java)
+            intent.putExtra("title", "Select media")
+            intent.putExtra("mode", 3)
+            intent.putExtra("maxSelection", 2) // Optional
+            startActivityForResult(intent, OPEN_MEDIA_PICKER)*/
             GeeksMediaPicker.with(this)
                 .setMediaType(GeeksMediaType.VIDEO)
                 .setIncludesFilePath(true)
@@ -130,6 +142,7 @@ class AddVideoActivity : BaseActivity(){
                     try
                     {
                         mViewModel.uploadFile(file!!);
+                       // file?.getAbsolutePath()?.let { it1 -> onFilePicked(it1) };
 
                     }
                     catch (e:Exception)
@@ -227,8 +240,8 @@ class AddVideoActivity : BaseActivity(){
         //map.addProperty(API_KEY_FORMATE_TYPE, getVideoType(url1))
         map.addProperty(
             API_KEY_FORMATE_TYPE, if (this@AddVideoActivity.checkboxUrl?.isChecked == true)
-                "video"
-            else getVideoType(url1)
+                getVideoType(url1)
+            else "video"
         )
        // map.addProperty(API_KEY_SRC_URL, url)
 
@@ -281,5 +294,40 @@ class AddVideoActivity : BaseActivity(){
         }
     }
 
+
+    fun onFilePicked(filePath: String) {
+        MultipartUploadRequest(this, serverUrl = "https://ptsv2.com/t/7cqro-1607767081/post")
+            .setMethod("POST")
+            .addFileToUpload(
+                filePath = filePath,
+                parameterName = "myFile"
+            ).startUpload()
+    }
+
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        // Check which request we're responding to
+        if (requestCode == OPEN_MEDIA_PICKER) {
+            // Make sure the request was successful
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                val selectionResult = data.getStringArrayListExtra("result")
+                selectionResult.forEach {
+                    try {
+                        Log.d("MyApp", "Image Path : " + it)
+                        val uriFromPath = Uri.fromFile(File(it))
+                        //file = File(uriFromPath)
+                        onFilePicked(it)
+                        Log.d("MyApp", "Image URI : " + uriFromPath)
+                        // Convert URI to Bitmap
+                       *//* val bm = BitmapFactory.decodeStream(
+                            contentResolver.openInputStream(uriFromPath))
+                        image.setImageBitmap(bm)*//*
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+        }
+    }*/
 
 }
